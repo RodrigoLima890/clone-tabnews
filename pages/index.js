@@ -4,3 +4,4 @@ function Home(){
 }
 // o default indica que será o componente padrão a ser exportado
 export default Home;
+ 
