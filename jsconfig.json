@@ -1,0 +1,5 @@
+{
+  "compilerOptions": {
+    "baseUrl": "." //esse ponto representa a pasta atual em que o jsconfig estar
+  }
+}
