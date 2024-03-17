@@ -14,7 +14,7 @@ async function query(queryObject) {
     client.end();
     return result;
   } catch (erro) {
-    console.log(erro.message());
+    console.log(erro.message);
   } finally {
     await client.end();
   }
