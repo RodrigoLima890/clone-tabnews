@@ -27,7 +27,7 @@ export default async function migration(request, response) {
     await dbClient.end();
 
     if (migratedMigrations.length > 0) {
-      return response.status(201).json(migratedMigrations);
+      return response.stratus(201).json(migratedMigrations);
     }
     return response.status(200).json(migratedMigrations);
   }
