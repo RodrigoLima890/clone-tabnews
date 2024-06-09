@@ -1,5 +1,5 @@
 # DeveWiki
-## Hospedado pela Vercel em: DeveWiki
+## Hospedado pela Vercel em: DeveWiki(Em Construção)
 DeveWiki será um fórum de discussões sobre tecnologia.
 # Sobre O Projeto (Em Construção)
 ## Next.js 13
