@@ -1,9 +1,11 @@
 import database from "infra/database";
+import orchestrator from "tests/orchestrator";
 
-beforeAll(cleanDatabase);
-async function cleanDatabase() {
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
   await database.query("drop schema public cascade; create schema public;");
-}
+});
+
 async function tableExistsVerify() {
   const { rows } = await database.query(
     "SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'pgmigrations')",
