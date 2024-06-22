@@ -2,6 +2,8 @@
 ## Hospedado pela Vercel em: DeveWiki(Em Construção)
 DeveWiki será um fórum de discussões sobre tecnologia.
 # Sobre O Projeto (Em Construção)
+## Vercel
+A vercel esta fazendo o Deploy automatico desse código
 ## Next.js 13
 Este é um projeto full stack que aproveita ao máximo as qualidades e funcionalidades do Next.js 13, oferecendo uma experiência de desenvolvimento robusta e eficiente.
 ## Jest
@@ -11,6 +13,7 @@ CI/CD
 Estou usando o banco de dados relacional postgreSql. estou subindo ele a partir de sua imagem com o docker compose usando o comando no package.json(npm run services:up⬆️)
 ## Aplicação API First
 A aplicação será desenvolvida seguindo a abordagem API First. Isso significa que a API será desenvolvida primeiro, garantindo que todos os recursos e endpoints estejam disponíveis antes do desenvolvimento do front-end que irá consumi-la.
+
 ## Ganhos ao Usar o design API FIsrt
 ### 1. Clareza e Consistência
     - Documentação Detalhada: A API é projetada e documentada desde o início, proporcionando uma referência clara para todos os desenvolvedores envolvidos no projeto.
