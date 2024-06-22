@@ -46,10 +46,7 @@ Cada integração é verificada por meio de testes automatizados para detectar e
 ## CD (Continuous Deployment)
 Continuous Deployment é uma extensão do Continuous Integration onde cada alteração de código que passa nos testes automatizados é automaticamente implantada em produção. Isso permite que novas funcionalidades, melhorias e correções cheguem aos usuários de maneira rápida e segura.
 
-## No Momento:
-A ideia é que consigamos excutar os teste e subir o servidor a partir de um único comando 
-Conseguir estabilizar os comandos `npm dev` e `npm test` criação de dois arquivos o wait-for-postgres.js e orchetrator.js para torna isso possivel. ambos são importantes para evitar problemas de `race condition`
 ### wait-for-postgres.js
 Executa o comando `docker exec postgres-dev pg_isready --host localhost` até o processo do postgres esta pronto para receber conexões. usei o modulo npm `child_process`
 ### orchestrator.js
-Usei o modulo `async-retry` para de forma recursiva validar se endpoint `http://localhost:3000/api/v1/status` já esta funcional antes de rodar os testes
+Usei o modulo `async-retry` para de forma recursiva validar se endpoint `http://localhost:3000/api/v1/status` esta retornando um status code de `200` antes de proceguir
