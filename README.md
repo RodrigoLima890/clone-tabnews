@@ -2,6 +2,8 @@
 ## Hospedado pela Vercel em: DeveWiki(Em Construção)
 DeveWiki será um fórum de discussões sobre tecnologia.
 # Sobre O Projeto (Em Construção)
+## Vercel
+A vercel esta fazendo o Deploy automatico desse código
 ## Next.js 13
 Este é um projeto full stack que aproveita ao máximo as qualidades e funcionalidades do Next.js 13, oferecendo uma experiência de desenvolvimento robusta e eficiente.
 ## Jest
@@ -11,6 +13,7 @@ CI/CD
 Estou usando o banco de dados relacional postgreSql. estou subindo ele a partir de sua imagem com o docker compose usando o comando no package.json(npm run services:up⬆️)
 ## Aplicação API First
 A aplicação será desenvolvida seguindo a abordagem API First. Isso significa que a API será desenvolvida primeiro, garantindo que todos os recursos e endpoints estejam disponíveis antes do desenvolvimento do front-end que irá consumi-la.
+
 ## Ganhos ao Usar o design API FIsrt
 ### 1. Clareza e Consistência
     - Documentação Detalhada: A API é projetada e documentada desde o início, proporcionando uma referência clara para todos os desenvolvedores envolvidos no projeto.
@@ -46,10 +49,7 @@ Cada integração é verificada por meio de testes automatizados para detectar e
 ## CD (Continuous Deployment)
 Continuous Deployment é uma extensão do Continuous Integration onde cada alteração de código que passa nos testes automatizados é automaticamente implantada em produção. Isso permite que novas funcionalidades, melhorias e correções cheguem aos usuários de maneira rápida e segura.
 
-## No Momento:
-A ideia é que consigamos excutar os teste e subir o servidor a partir de um único comando 
-Conseguir estabilizar os comandos `npm dev` e `npm test` criação de dois arquivos o wait-for-postgres.js e orchetrator.js para torna isso possivel. ambos são importantes para evitar problemas de `race condition`
 ### wait-for-postgres.js
 Executa o comando `docker exec postgres-dev pg_isready --host localhost` até o processo do postgres esta pronto para receber conexões. usei o modulo npm `child_process`
 ### orchestrator.js
-Usei o modulo `async-retry` para de forma recursiva validar se endpoint `http://localhost:3000/api/v1/status` já esta funcional antes de rodar os testes
+Usei o modulo `async-retry` para de forma recursiva validar se endpoint `http://localhost:3000/api/v1/status` esta retornando um status code de `200` antes de proceguir
