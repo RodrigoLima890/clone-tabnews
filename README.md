@@ -1,5 +1,5 @@
 # DeveWiki
-## Hospedado pela Vercel em: DeveWiki(Em Construção)
+## Hospedado pela Vercel em: https://devewiki.com.br(Em Construção)
 DeveWiki será um fórum de discussões sobre tecnologia.
 # Sobre O Projeto (Em Construção)
 ## Vercel
@@ -8,7 +8,6 @@ A vercel esta fazendo o Deploy automatico desse código
 Este é um projeto full stack que aproveita ao máximo as qualidades e funcionalidades do Next.js 13, oferecendo uma experiência de desenvolvimento robusta e eficiente.
 ## Jest
 Os testes unitários e de integração serão realizados utilizando o Jest, garantindo a confiabilidade e qualidade do código através de testes automatizados.
-CI/CD
 ## Banco
 Estou usando o banco de dados relacional postgreSql. estou subindo ele a partir de sua imagem com o docker compose usando o comando no package.json(npm run services:up⬆️)
 ## Aplicação API First
@@ -49,7 +48,14 @@ Cada integração é verificada por meio de testes automatizados para detectar e
 ## CD (Continuous Deployment)
 Continuous Deployment é uma extensão do Continuous Integration onde cada alteração de código que passa nos testes automatizados é automaticamente implantada em produção. Isso permite que novas funcionalidades, melhorias e correções cheguem aos usuários de maneira rápida e segura.
 
+## Como foi feito o CI desse projeto?
+Primeiro precisava estabilizar os comandos para subir o servidor o banco e rodar os testes. precisei criar esses dois arquivos para isso
 ### wait-for-postgres.js
 Executa o comando `docker exec postgres-dev pg_isready --host localhost` até o processo do postgres esta pronto para receber conexões. usei o modulo npm `child_process`
 ### orchestrator.js
 Usei o modulo `async-retry` para de forma recursiva validar se endpoint `http://localhost:3000/api/v1/status` esta retornando um status code de `200` antes de proceguir
+### Implantação do CI
+Utilizei o github actions para automatizar os testes antes de qualquer pull request. Atualmente só é possivel integrar um código com o projeto se e somente se ele passar em todos os testes antes.
+na raiz do meu projeto foi criado a pasta .github e dentro dessa pasta um outro diretório chamado workflows que dentro dele temos um yaml com as ações que os jobs que o github actios vão rodar. Além disso foi especificado um gatilho. 
+
+
