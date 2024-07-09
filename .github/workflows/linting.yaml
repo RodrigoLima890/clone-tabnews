@@ -1,4 +1,4 @@
-name: Kinting
+name: Linting
 
 on: pull_request
 
