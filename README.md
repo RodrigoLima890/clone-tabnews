@@ -85,5 +85,5 @@ Usei o modulo `async-retry` para de forma recursiva validar se endpoint `http://
 
 ### Implantação do CI
 
-Utilizei o github actions para automatizar os testes antes de qualquer pull request. Atualmente só é possivel integrar um código com o projeto se e somente se ele passar em todos os testes antes.
-na raiz do meu projeto foi criado a pasta .github e dentro dessa pasta um outro diretório chamado workflows que dentro dele temos um yaml com as ações que os jobs que o github actios vão rodar. Além disso foi especificado um gatilho.
+Utilizei o github actions para automatizar os testes antes de qualquer pull request. Atualmente só é possivel integrar um código com o projeto se e somente se ele passar em todos os testes antes. Além disso é feito uma checagem dos padrões e qualidade do código escrito.<br>
+**Como foi feito**: Na raiz do meu projeto foi criado a pasta .github e dentro dessa pasta um outro diretório chamado workflows que dentro dele temos um yaml com as ações que os jobs que o github actios vão rodar. Além disso foi especificado um gatilho.
