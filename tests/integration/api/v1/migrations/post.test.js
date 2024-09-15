@@ -15,24 +15,37 @@ async function tableExistsVerify() {
   }
   return rows[0].exists;
 }
-test("POST to /api/v1/migrations should return 200", async () => {
-  const response1 = await fetch("http://localhost:3000/api/v1/migrations", {
-    method: "POST",
+describe("POST /api/v1/migrations", () => {
+  describe("Anonimous user", () => {
+    describe("Running pending migrations", () => {
+      test("For the first time", async () => {
+        const response1 = await fetch(
+          "http://localhost:3000/api/v1/migrations",
+          {
+            method: "POST",
+          },
+        );
+        expect(response1.status).toBe(201);
+        const responseBody = await response1.json();
+
+        expect(Array.isArray(responseBody)).toBe(true);
+        expect(responseBody.length).toBeGreaterThan(0);
+
+        expect(await tableExistsVerify()).toEqual(true);
+        const { rows } = await database.query("SELECT id FROM pgmigrations;");
+        expect(responseBody.length).toEqual(rows.length);
+      });
+      test("For the second time", async () => {
+        const response2 = await fetch(
+          "http://localhost:3000/api/v1/migrations",
+          {
+            method: "POST",
+          },
+        );
+        expect(response2.status).toBe(200);
+        const response2Body = await response2.json();
+        expect(response2Body.length).toEqual(0);
+      });
+    });
   });
-  expect(response1.status).toBe(201);
-  const responseBody = await response1.json();
-
-  const response2 = await fetch("http://localhost:3000/api/v1/migrations", {
-    method: "POST",
-  });
-  expect(response2.status).toBe(200);
-  const response2Body = await response2.json();
-
-  expect(Array.isArray(responseBody)).toBe(true);
-  expect(responseBody.length).toBeGreaterThan(0);
-  expect(response2Body.length).toEqual(0);
-
-  expect(await tableExistsVerify()).toEqual(true);
-  const { rows } = await database.query("SELECT id FROM pgmigrations;");
-  expect(responseBody.length).toEqual(rows.length);
 });
