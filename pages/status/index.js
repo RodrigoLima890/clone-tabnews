@@ -10,12 +10,12 @@ export default function StatusPage() {
   return (
     <>
       <h1>Status</h1>
-      <UpdatedAt />
+      <DatabaseStatus />
     </>
   );
 }
 
-function UpdatedAt() {
+function DatabaseStatus() {
   const { isLoading, data } = useSWR("/api/v1/status", fetchApi, {
     refreshInterval: 3000,
   });
@@ -24,7 +24,6 @@ function UpdatedAt() {
   let max_connections = "Carregando ...";
   let database_version = "Carregando ...";
   if (!isLoading && data) {
-    console.log(data);
     updatedAtText = new Date(data.update_at).toLocaleString("pt-BR");
     connections_opened = data.dependencies.database.opened_connections;
     max_connections = data.dependencies.database.max_connections;
