@@ -1,5 +1,5 @@
 import { Client } from "pg";
-
+import { ServiceError } from "./errors";
 async function query(queryObject) {
   // ssl: process.env.NODE_ENV == "production" ? true : false,
   let client;
@@ -8,8 +8,11 @@ async function query(queryObject) {
     const result = await client.query(queryObject);
     return result;
   } catch (error) {
-    console.error(error);
-    throw error;
+    const serviceErroObject = new ServiceError({
+      message: "Erro com a conexão com o banco ou na query",
+      cause: error,
+    });
+    throw serviceErroObject;
   } finally {
     await client?.end();
   }
