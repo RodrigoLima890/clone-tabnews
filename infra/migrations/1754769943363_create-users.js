@@ -21,11 +21,11 @@ exports.up = (pgm) => {
     },
     created_at: {
       type: "timestamptz",
-      default: pgm.fun("now()"),
+      default: pgm.func("now()"),
     },
     updated_at: {
       type: "timestamptz",
-      default: pgm.fun("now()"),
+      default: pgm.func("now()"),
     },
   });
 };
