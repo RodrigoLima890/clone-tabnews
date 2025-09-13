@@ -1,4 +1,8 @@
-import { InternalSeverErro, MethodNotAllowedError } from "infra/errors";
+import {
+  InternalSeverErro,
+  MethodNotAllowedError,
+  ValidationError,
+} from "infra/errors";
 
 function onNoMatchHandler(request, response) {
   const publicErrorObject = new MethodNotAllowedError();
@@ -6,12 +10,14 @@ function onNoMatchHandler(request, response) {
 }
 
 function onErrorHandle(error, request, response) {
+  if (error instanceof ValidationError) {
+    return response.status(error.statusCode).json(error.toJSON());
+  }
   const internalSeverErro = new InternalSeverErro({
     cause: error,
     statusCode: error.statusCode,
   });
 
-  console.log(internalSeverErro);
   response.status(internalSeverErro.statusCode).json(internalSeverErro);
 }
 
