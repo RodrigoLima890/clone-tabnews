@@ -2,6 +2,7 @@ import {
   InternalSeverErro,
   MethodNotAllowedError,
   ValidationError,
+  NotFoundError,
 } from "infra/errors";
 
 function onNoMatchHandler(request, response) {
@@ -10,7 +11,7 @@ function onNoMatchHandler(request, response) {
 }
 
 function onErrorHandle(error, request, response) {
-  if (error instanceof ValidationError) {
+  if (error instanceof ValidationError || error instanceof NotFoundError) {
     return response.status(error.statusCode).json(error.toJSON());
   }
   const internalSeverErro = new InternalSeverErro({
